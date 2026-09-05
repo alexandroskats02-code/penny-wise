@@ -1,0 +1,30 @@
+services:
+  frontend:
+    build:
+      target: dev
+    command:
+      npm run dev -- --host 0.0.0.0
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./frontend/package.json
+
+  backend:
+    build:
+      target: dev
+    command:
+      npm run dev
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./backend
+          target: /src
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./backend/package.json
