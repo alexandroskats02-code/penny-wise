@@ -25,7 +25,10 @@ const SignUp = () => {
     });
   };
   let submit = (e) => {
-    e.preventDefault();
+      e.preventDefault();
+      if (formData.password !== formData.checkpassword) {
+          return; // surface an error and return early
+      } 
   };
 
   return (
@@ -37,7 +40,7 @@ const SignUp = () => {
           type="text"
           id="username"
           name="username"
-          pattern="*[A-Z]"
+          pattern=".*[A-Za-z]"
           minLength="3"
           maxLength="9"
           onChange={handleChange}
