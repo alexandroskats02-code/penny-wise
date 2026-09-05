@@ -26,8 +26,6 @@ const SignUp = () => {
   };
   let submit = (e) => {
     e.preventDefault();
-
-    console.log(formData);
   };
 
   return (
