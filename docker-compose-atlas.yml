@@ -1,12 +1,4 @@
 services:
-  mongo:
-    image: mongo:7
-    restart: unless-stopped
-    ports:
-      - "27017:27017"
-    volumes:
-      - pennywise_db:/data/db
-
   backend:
     build:
       context: ./backend
@@ -15,9 +7,7 @@ services:
     ports: 
       - "5000:5000"
     environment:
-      - MONGODB_URI=${MONGODB_URI}
-    depends_on:
-      - mongo
+     - ${MONGODB_URI:?MONGODB_URI must be set}
 
   frontend:
     build:
@@ -28,7 +18,3 @@ services:
       - backend
     ports:
       - "5173:5173"
-
-volumes:
-  pennywise_db: {}
-
