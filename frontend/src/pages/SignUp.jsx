@@ -40,7 +40,7 @@ const SignUp = () => {
           type="text"
           id="username"
           name="username"
-          pattern=".*[A-Za-z]"
+          pattern="[A-Za-z]{3,9}"
           minLength="3"
           maxLength="9"
           onChange={handleChange}
