@@ -19,8 +19,6 @@ const LoginPage = () => {
 
   const submit = (e) =>{
     e.preventDefault();
-
-    console.log(formData);
   }
 
 
@@ -75,7 +73,6 @@ const LoginPage = () => {
           required
         />
        <button type="submit">Log In</button>
-        <Link to=""> Did you forget your password ?</Link>
       </form>
     </>
   );
