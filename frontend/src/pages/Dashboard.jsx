@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import LessonArtwork from "../assets/Lesson-artwork.svg";
 import wallet from "../assets/wallet_icon.svg";
 import spending from "../assets/shopping_bag_icon.svg";
 import saving from "../assets/target_icon.svg";
 import earning from "../assets/stars_icon.svg";
+import { Link } from "react-router-dom";
 
 const TOPIC_AMOUNT = 12;
 const lesson = {
@@ -44,9 +44,6 @@ const topics = [{
 const Dashboard = () => {
   return (
     <>
-      {/*This is where NavBar is going to be
-      with the Header and the NavLinks for Sign-up and Log-in*/}
-      <Navbar />
       <main className="p-4 max-w-7xl mx-auto text-left bg-[var(--bg)] grid gap-4 md:gap-8 auto-cols-fr rows-3">
         
         <section className="dashboardHero">
@@ -78,19 +75,24 @@ const Dashboard = () => {
         <section className="exploreTopics">
             <div className="flex justify-between items-center">
                 <h2>Explore topics</h2>
-                <p className="text-sm text-gray-600 cursor-pointer hover:underline">view all {TOPIC_AMOUNT} →</p>
+                <Link
+                to="/modules"
+                className="text-sm text-gray-600 cursor-pointer hover:underline">view all {TOPIC_AMOUNT} →
+                </Link>
             </div>
             <div className="topicCards grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
                 {
                     topics && (
                         topics.map((topic) => {
                             return (
-                                <div key={topic.id} className="topicCard p-6 m-2 rounded shadow-md text-left bg-[var(--accent-bg)] hover:shadow-lg transition-shadow duration-300 cursor-pointer hover:scale-105">
-                                <img src={topic.icon} alt={topic.name} className="w-12 h-12 mb-2" />
-                                <h2 className="text-lg font-bold">{topic.name}</h2>
-                                <p className="text-sm text-gray-600">{topic.description}</p>
-                                <p className="font-bold">{topic.lesson_count} lessons →</p>
-                            </div>
+                                <Link key={topic.id} to={`/course`}>
+                                    <div className="topicCard p-6 m-2 rounded shadow-md text-left bg-[var(--accent-bg)] hover:shadow-lg transition-shadow duration-300 cursor-pointer hover:scale-105">
+                                        <img src={topic.icon} alt={topic.name} className="w-12 h-12 mb-2" />
+                                        <h2 className="text-lg font-bold">{topic.name}</h2>
+                                        <p className="text-sm text-gray-600">{topic.description}</p>
+                                        <p className="font-bold">{topic.lesson_count} lessons →</p>
+                                    </div>
+                                </Link>
                             )
                         })
                     )

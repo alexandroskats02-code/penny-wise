@@ -5,8 +5,7 @@ export default function NavBar() {
     <nav className="navbar grid grid-cols-3 p-4">
 
       <Link to="/" className="col-span-1 text-left">Home</Link>
-      {/* <Link to="/dashboard" className="text-xl font-bold col-span-1">Penny Wise</Link> */}
-      <h2 className="text-xl font-bold col-span-1">Penny Wise</h2>
+      <Link to="/dashboard" className="text-xl font-bold col-span-1">Penny Wise</Link>
       <div className="auth-links flex gap-4 col-span-1 justify-end">
         <Link to="/profile">Profile</Link>
         <Link to="/signup">Sign Up</Link>
@@ -14,4 +13,4 @@ export default function NavBar() {
       </div>
     </nav>
   );
-}
+};
