@@ -1,24 +1,24 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const lessonSchema = new mongoose.Schema(
   {
     courseId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Course',
-      required: true
+      required: true,
     },
     name: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     experience: {
       type: Number,
-      default: 10
+      default: 10,
     },
-    pages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Page'}]
-  }, { timestamps: true }
-)
+    pages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Page' }],
+  },
+  { timestamps: true },
+);
 
-module.exports = mongoose.model('Lesson', lessonSchema)
-
+module.exports = mongoose.model('Lesson', lessonSchema);

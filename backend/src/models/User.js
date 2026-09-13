@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema(
   {
@@ -25,15 +25,15 @@ const userSchema = new mongoose.Schema(
       enum: ['learner', 'author'],
       default: 'learner',
     },
-    coursesEnrolled: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course'}],
-    coursesCreated: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course'}],
+    coursesEnrolled: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+    coursesCreated: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
     currentStreak: {
       type: Number,
-      default: 0
+      default: 0,
     },
     longestStreak: {
       type: Number,
-      default: 0
+      default: 0,
     },
     profilePicUrl: {
       type: String,
@@ -41,22 +41,24 @@ const userSchema = new mongoose.Schema(
     },
     level: {
       type: Number,
-      default: 1
+      default: 1,
     },
     experience: {
       type: Number,
-      default: 0
+      default: 0,
     },
     currentLives: {
       type: Number,
       default: 5,
-      min: 0
+      min: 0,
     },
     country: {
-      type: String,
-      default: "USA"
+      type: Schema.Types.ObjectId,
+      default: 'USA',
+      ref: 'Country',
+      required: true,
     }
-  }, { timestamps: true }
+  }, { timestamps: true },
 )
 
 // TOOK THESE FROM PULSEBOARD
@@ -76,5 +78,4 @@ userSchema.methods.toJSON = function toJSON() {
   return obj;
 };
 
-module.exports = mongoose.model('User', userSchema)
-
+module.exports = mongoose.model('User', userSchema);

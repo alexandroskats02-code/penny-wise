@@ -1,5 +1,3 @@
-import React from "react";
-
 const LandingPage = () => {
   return (
     <>
@@ -13,7 +11,6 @@ const LandingPage = () => {
 
         <section>
           <h2>Benefits of the app</h2>
-          
         </section>
 
         <section>
